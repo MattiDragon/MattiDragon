@@ -5,10 +5,10 @@ on:
     inputs:
       modrinth-id:
         type: string
-        required: true
+        required: false
       curseforge-id:
         type: string
-        required: true
+        required: false
       version-type:
         type: string
         required: true
@@ -23,9 +23,9 @@ on:
         required: false
     secrets:
       modrinth-token:
-        required: true
+        required: false
       curseforge-token:
-        required: true
+        required: false
 
 jobs:
   publish:
