@@ -21,6 +21,9 @@ on:
       mod-loaders:
         type: string
         required: false
+      jitpack-safe-version:
+        type: boolean
+        required: false
     secrets:
       modrinth-token:
         required: false
@@ -79,4 +82,4 @@ jobs:
           curseforge-id: ${{ inputs.curseforge-id }}
 
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          github-tag: ${{ steps.versions.outputs.mod_version }}+mc.${{ steps.versions.outputs.minecraft_version }}
+          github-tag: "${{ inputs.jitpack-safe-version ? '${{ steps.versions.outputs.mod_version }}-mc.${{ steps.versions.outputs.minecraft_version }}' : '${{ steps.versions.outputs.mod_version }}+mc.${{ steps.versions.outputs.minecraft_version }}' }}"
