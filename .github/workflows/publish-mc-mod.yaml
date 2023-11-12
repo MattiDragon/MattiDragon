@@ -82,4 +82,5 @@ jobs:
           curseforge-id: ${{ inputs.curseforge-id }}
 
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          github-tag: "${{ inputs.jitpack-safe-version ? '${{ steps.versions.outputs.mod_version }}-mc.${{ steps.versions.outputs.minecraft_version }}' : '${{ steps.versions.outputs.mod_version }}+mc.${{ steps.versions.outputs.minecraft_version }}' }}"
+          # We need to use boolean logic to fake a ternary operator
+          github-tag: "${{ inputs.jitpack-safe-version && '${{ steps.versions.outputs.mod_version }}-mc.${{ steps.versions.outputs.minecraft_version }}' || '${{ steps.versions.outputs.mod_version }}+mc.${{ steps.versions.outputs.minecraft_version }}' }}"
