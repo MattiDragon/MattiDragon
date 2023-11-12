@@ -83,4 +83,4 @@ jobs:
 
           github-token: ${{ secrets.GITHUB_TOKEN }}
           # We need to use boolean logic to fake a ternary operator
-          github-tag: "${{ inputs.jitpack-safe-version && '${{ steps.versions.outputs.mod_version }}-mc.${{ steps.versions.outputs.minecraft_version }}' || '${{ steps.versions.outputs.mod_version }}+mc.${{ steps.versions.outputs.minecraft_version }}' }}"
+          github-tag: "${{ format('{0}{1}mc.{2}', steps.versions.outputs.mod_version, inputs.jitpack-safe-version && '-' || '+' , steps.versions.outputs.minecraft_version)}}"
