@@ -74,11 +74,11 @@ jobs:
           game-versions: ${{ inputs.minecraft-versions || steps.versions.outputs.minecraft_version }}
           changelog: ${{ steps.changelog.outputs.content }}
 
-          modrinth-token: ${{ secrets.modrinth-token }}
+          modrinth-token: ${{ secrets.modrinth-token || '${undefined}' }}
           modrinth-id: ${{ inputs.modrinth-id }}
           modrinth-featured: false
 
-          curseforge-token: ${{ secrets.curseforge-token }}
+          curseforge-token: ${{ secrets.curseforge-token || '${undefined}' }}
           curseforge-id: ${{ inputs.curseforge-id }}
 
           github-token: ${{ secrets.GITHUB_TOKEN }}
