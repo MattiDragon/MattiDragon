@@ -38,7 +38,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
-          java-version: ${{ inputs.java-version || '17'}}
+          java-version: ${{ inputs.java-version || '21'}}
           distribution: "temurin"
           cache: "gradle"
 
@@ -84,3 +84,5 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           # We need to use boolean logic to fake a ternary operator
           github-tag: "${{ format('{0}{1}mc.{2}', steps.versions.outputs.mod_version, inputs.jitpack-safe-version && '-' || '+' , steps.versions.outputs.minecraft_version)}}"
+          # Make sure we use the correct branch
+          github-commitish: ${{ github.ref }}
